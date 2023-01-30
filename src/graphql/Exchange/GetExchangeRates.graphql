@@ -1,0 +1,41 @@
+query getExchangeRates @api(name: starkIndexer) {
+  getExchangeRates {
+    tokenId
+    tokenName
+    amount
+    buyAmount
+    sellAmount
+    currencyReserve
+    tokenReserve
+    percentChange24Hr
+  }
+}
+
+query getEconomyTotals @api(name: starkIndexer) {
+  economyResourceMintedTotals {
+    resourceId
+    resourceName
+    amount
+  }
+  economyResourceBurnedTotals {
+    resourceId
+    resourceName
+    amount
+  }
+  economyLpResourceMintedTotals {
+    resourceId
+    resourceName
+    amount
+  }
+  economyLpResourceBurnedTotals {
+    resourceId
+    resourceName
+    amount
+  }
+  economyExchangeLordsPurchasedTotal
+  economyExchangeResourcePurchasedTotals {
+    resourceId
+    resourceName
+    amount
+  }
+}

@@ -1,0 +1,47 @@
+fragment RealmFragment on Realm {
+  realmId
+  owner
+  bridgedOwner
+  ownerL2
+  settledOwner
+  name
+  rarityRank
+  rarityScore
+  orderType
+  wonder
+  lastAttacked
+  lastClaimTime
+  lastTick
+  lastVaultTime
+  longitude
+  latitude
+  resources {
+    resourceId
+    resourceName
+    labor {
+      qtyBuilt
+      lastUpdate
+      balance
+      vaultBalance
+    }
+    level
+    upgrades
+  }
+  traits {
+    type
+    qty
+  }
+
+  relic {
+    realmId
+    heldByRealm
+  }
+  relicsOwned {
+    realmId
+    heldByRealm
+  }
+  ...RealmBuildingsFragment
+  ...RealmTroopsFragment
+  ...RealmArmiesFragment
+  ...RealmFoodsFragment
+}
