@@ -35,7 +35,6 @@ export default new ApolloClient({
   ]),
   cache: new InMemoryCache({
     typePolicies: {
-      /* eslint-disable @typescript-eslint/naming-convention */
       Query: {
         fields: {},
       },
