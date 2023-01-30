@@ -7,7 +7,6 @@ import {
 import { concatPagination } from '@apollo/client/utilities';
 import { MultiAPILink } from '@habx/apollo-multi-endpoint-link';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const APOLLO_ENDPOINTS = {
   mainnet: {
     realms:
