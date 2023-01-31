@@ -22,8 +22,8 @@ export const siteConfig: SiteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://twitter.com/lootrealms",
+    github: "https://github.com/BibliothecaDAO",
+    docs: "https://bibliothecadao.xyz/",
   },
 }
