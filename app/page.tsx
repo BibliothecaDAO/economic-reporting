@@ -15,17 +15,15 @@ import { Table } from "@/components/table/table"
 export default function IndexPage() {
   const { data, loading } = useGetEconomyTotalsQuery({ pollInterval: 10000 })
 
-  const tableData = data?.economyLpResourceMintedTotals.map(
-    (resource, index) => {
-      return {
-        resource: resource.resourceName,
-        minted: +formatEther(resource.amount).toLocaleString(),
-        burnt: +formatEther(
-          data.economyResourceBurnedTotals[index].amount
-        ).toLocaleString(),
-      }
+  const tableData = data?.economyResourceMintedTotals.map((resource, index) => {
+    return {
+      resource: resource.resourceName,
+      minted: +formatEther(resource.amount).toLocaleString(),
+      burnt: +formatEther(
+        data.economyResourceBurnedTotals[index].amount
+      ).toLocaleString(),
     }
-  )
+  })
 
   return (
     <Layout>
