@@ -42,9 +42,13 @@ export default function IndexPage() {
     QueryName.useGetEconomyTotalsQuery
   )
 
-  const { data, loading } = queryFunction(queryName, {
-    pollInterval: 10000,
-  })
+  const options = useMemo(() => {
+    return {
+      pollInterval: 10000,
+    }
+  }, [queryName])
+
+  const { data, loading } = queryFunction(queryName, options)
 
   useMemo(() => {
     let tableData: any = []
