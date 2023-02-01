@@ -1,13 +1,9 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import Head from "next/head"
-import Link from "next/link"
-import {
-  useGetEconomyTotalsQuery,
-  useGetRealmHistoryQuery,
-  useGetRealmQuery,
-} from "@/src/generated/graphql"
+import { useEternum } from "@/src/hooks/useEternum"
+import { QueryName, RealmEvent } from "@/src/types"
 import { formatEther } from "@ethersproject/units"
 
 import { Layout } from "@/components/layout"
@@ -16,39 +12,25 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-enum QueryName {
-  useGetEconomyTotalsQuery = "useGetEconomyTotalsQuery",
-  useGetRealmHistoryQuery = "useGetRealmHistoryQuery",
-}
-
-const queryFunctions: { [K in QueryName]: (options: any) => any } = {
-  [QueryName.useGetEconomyTotalsQuery]: useGetEconomyTotalsQuery,
-  [QueryName.useGetRealmHistoryQuery]: useGetRealmHistoryQuery,
-}
-
-const queryFunction = (queryName: QueryName, options?: any) => {
-  return queryFunctions[queryName](options)
-}
-
 export default function IndexPage() {
   const [tableData, setTableData] = useState<any>([])
-  const [queryName, setQueryName] = useState<QueryName>(
-    QueryName.useGetEconomyTotalsQuery
+
+  const {
+    queryFunction,
+    queryName,
+    setQueryName,
+    options,
+    useVariables,
+    variables,
+  } = useEternum()
+
+  const { data, loading } = queryFunction(
+    queryName,
+    useVariables(variables, options)
   )
-
-  const options = useMemo(() => {
-    return {
-      pollInterval: 10000,
-    }
-  }, [queryName])
-
-  const { data, loading } = queryFunction(queryName, options)
 
   useMemo(() => {
     let tableData: any = []
