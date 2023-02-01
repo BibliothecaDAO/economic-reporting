@@ -33,7 +33,7 @@ export const Table = ({ headers, data }: TableProps) => {
           <tr key={index}>
             {Object.values(row).map((cell: any, cellIndex) => (
               <td className="p-2 border border-white/30" key={cellIndex}>
-                {cell}
+                {typeof cell === "object" ? JSON.stringify(cell) : cell}
               </td>
             ))}
           </tr>
