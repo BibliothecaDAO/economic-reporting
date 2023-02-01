@@ -1,4 +1,5 @@
 import {
+  RealmHistoryWhereInput,
   useGetEconomyTotalsQuery,
   useGetRealmHistoryQuery,
   useGetRealmQuery,
@@ -9,13 +10,16 @@ export enum QueryName {
   useGetRealmHistoryQuery = "useGetRealmHistoryQuery",
 }
 
-export enum QueryWhereInput {
-  RealmHistoryWhereInput = "RealmHistoryWhereInput",
+export type QueryFunction<T> = (options: T) => any
+
+export const queryFunctions: { [K in QueryName]: QueryFunction<any> } = {
+  [QueryName.useGetEconomyTotalsQuery]: useGetEconomyTotalsQuery,
+  [QueryName.useGetRealmHistoryQuery]:
+    useGetRealmHistoryQuery as QueryFunction<RealmHistoryWhereInput>,
 }
 
-export const queryFunctions: { [K in QueryName]: (options: any) => any } = {
-  [QueryName.useGetEconomyTotalsQuery]: useGetEconomyTotalsQuery,
-  [QueryName.useGetRealmHistoryQuery]: useGetRealmHistoryQuery,
+export type QueryOptions = {
+  [K in keyof typeof queryFunctions]: Parameters<(typeof queryFunctions)[K]>[0]
 }
 
 export enum RealmEvent {

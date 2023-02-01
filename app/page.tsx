@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react"
 import Head from "next/head"
 import { useEternum } from "@/src/hooks/useEternum"
-import { QueryName, RealmEvent } from "@/src/types"
+import { QueryName, QueryOptions, RealmEvent } from "@/src/types"
 import { formatEther } from "@ethersproject/units"
 
 import { Layout } from "@/components/layout"

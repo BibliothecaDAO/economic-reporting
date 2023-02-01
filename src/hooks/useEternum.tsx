@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
 
-import { QueryName, RealmEvent, queryFunctions } from "../types"
+import { QueryName, QueryOptions, RealmEvent, queryFunctions } from "../types"
 
 export const useEternum = () => {
   const [queryName, setQueryName] = useState<QueryName>(
