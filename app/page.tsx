@@ -37,11 +37,10 @@ const queryFunction = (queryName: QueryName, options?: any) => {
 }
 
 export default function IndexPage() {
+  const [tableData, setTableData] = useState<any>([])
   const [queryName, setQueryName] = useState<QueryName>(
     QueryName.useGetEconomyTotalsQuery
   )
-
-  const [tableData, setTableData] = useState<any>([])
 
   const { data, loading } = queryFunction(queryName, {
     pollInterval: 10000,
@@ -110,7 +109,7 @@ export default function IndexPage() {
 
           {loading && <div>Loading...</div>}
 
-          {tableData && <Table data={tableData} />}
+          {tableData.length && <Table data={tableData} />}
         </div>
       </section>
     </Layout>
