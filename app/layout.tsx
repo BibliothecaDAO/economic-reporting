@@ -1,6 +1,6 @@
 "use client"
 
-import { ApolloProvider, InMemoryCache, gql } from "@apollo/client"
+import { ApolloProvider } from "@apollo/client"
 import { Inter as FontSans } from "@next/font/google"
 import { ThemeProvider } from "next-themes"
 import ApolloClient from "src/apolloClient"

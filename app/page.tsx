@@ -70,7 +70,6 @@ export default function IndexPage() {
     setTableData(tableData)
   }, [data])
 
-  console.log("data", data)
   return (
     <Layout>
       <Head>
